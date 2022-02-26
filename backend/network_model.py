@@ -13,6 +13,3 @@ class RecEngine(nn.Module):
         x = torch.tanh(x)
         x = self.output_layer(x)
         return x
-
-# hello? think discord died for me
-# lmao
