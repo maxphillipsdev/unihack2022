@@ -79,10 +79,26 @@ const Home: NextPage = () => {
             borderRadius: "3px",
           }}
         >
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={8}
+          ></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={6}
+          ></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={4}
+          ></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={8}
+          ></LessonCard>
         </HStack>
       </Box>
     </Flex>
