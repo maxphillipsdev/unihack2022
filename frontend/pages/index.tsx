@@ -1,6 +1,7 @@
 import { Box, Container, Flex, HStack, Text } from "@chakra-ui/react";
 
 import type { NextPage } from "next";
+import HeaderSection from "../components/HeaderSection";
 
 const Home: NextPage = () => {
   return (
