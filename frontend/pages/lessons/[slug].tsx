@@ -1,9 +1,10 @@
 import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+
 import { useRouter } from "next/router";
 
 const Lesson = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
 
   return (
     <Flex
