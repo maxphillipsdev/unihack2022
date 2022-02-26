@@ -17,6 +17,7 @@ const LessonCard: React.FC<Props> = ({ title, slug }) => {
           color: "white",
           borderRadius: "3px",
           padding: "14px",
+          cursor: "pointer",
         }}
       >
         <Box>Title: {title}</Box>
