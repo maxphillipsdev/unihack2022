@@ -116,6 +116,9 @@ export default function Navbar() {
             display={mobileNav.isOpen ? "none" : "flex"}
             alignItems="center"
           >
+            {/* <Box style={{ fontSize: "75%", color: "darkslategray" }}>
+              Welcome Max
+            </Box> */}
             <Link href="/student-profile">
               <Avatar
                 style={{ cursor: "pointer" }}

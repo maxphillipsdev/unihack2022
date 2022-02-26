@@ -5,6 +5,7 @@ import Link from "next/link";
 import HeaderSection from "../components/HeaderSection";
 import LessonCard from "../components/LessonCard";
 import { Heading } from "@chakra-ui/react";
+import StudentParameters from "../components/StudentParameters";
 
 const Home: NextPage = () => {
   return (
@@ -41,10 +42,26 @@ const Home: NextPage = () => {
             borderRadius: "3px",
           }}
         >
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
-          <LessonCard title="Title here" slug="slug-here"></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={5}
+          ></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={8}
+          ></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={6}
+          ></LessonCard>
+          <LessonCard
+            title="Title here"
+            slug="slug-here"
+            targetAge={5}
+          ></LessonCard>
         </HStack>
       </Box>
       <Box style={{ margin: "10px" }}>

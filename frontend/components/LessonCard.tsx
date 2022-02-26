@@ -5,9 +5,10 @@ import React from "react";
 interface Props {
   title: string;
   slug: string;
+  targetAge: number;
 }
 
-const LessonCard: React.FC<Props> = ({ title, slug }) => {
+const LessonCard: React.FC<Props> = ({ title, slug, targetAge }) => {
   return (
     <Link href={`/lesson/${slug}`}>
       <Box
@@ -22,6 +23,7 @@ const LessonCard: React.FC<Props> = ({ title, slug }) => {
       >
         <Box>Title: {title}</Box>
         <Box>Slug: {slug}</Box>
+        <Box>Target age: {targetAge}</Box>
       </Box>
     </Link>
   );
