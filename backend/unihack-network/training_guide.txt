@@ -97,7 +97,7 @@ Test case 1 (you do A LOT better in X):
 
 # Higher difficulty, worse score (you do a bit worse)
 # Result: slightly decrease rec age, slightly inc priority
-    I: (0.6, 8, 0.7, 7)
+    I: (0.6, 8, 0.7, 6)
     O: (-0.25, 0.05)
 ...
 
@@ -132,6 +132,6 @@ Test case 1 (you do A LOT better in X):
 
 # Same difficulty, lower score
 # Result: slightly dec rec age, slightly inc priority
-    I: (0.5, 5, 0.5, 5)
+    I: (0.3, 5, 0.5, 5)
     O: (-0.5, 0.1)
 

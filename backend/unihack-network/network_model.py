@@ -5,8 +5,8 @@ import torch.nn.functional as F
 class RecEngine(nn.Module):
     def __init__(self, input_dim = 4, output_dim=2):
         super(RecEngine, self).__init__()
-        self.hidden_layer = nn.Linear(input_dim, input_dim * 2)
-        self.output_layer = nn.Linear(input_dim * 2, output_dim)
+        self.hidden_layer = nn.Linear(input_dim, input_dim * 3)
+        self.output_layer = nn.Linear(input_dim * 3, output_dim)
     
     def forward(self, x):
         x = self.hidden_layer(x)
