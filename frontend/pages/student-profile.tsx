@@ -2,6 +2,8 @@ import React from "react";
 import { Grid, GridItem, Box, Text } from "@chakra-ui/react";
 import StudentHistory from "../components/StudentHistory";
 import StudentRadialBar from "../components/StudentRadialBar";
+import SubjectCompentencyChart from "../components/SubjectCompentencyChart";
+import RandomChart from "../components/RandomChart";
 
 const Profile = () => {
   return (
@@ -26,7 +28,7 @@ const Profile = () => {
         </GridItem>
         <GridItem w="100%" h="38vh" bg="gray.200" boxShadow="md">
           <Box bg="white" w="100%" height="90%" p={4} color="white">
-            This is the Box
+            <SubjectCompentencyChart />
           </Box>
           <Text fontSize="md" textAlign="center">
             Statistics Visualization #2
@@ -34,7 +36,7 @@ const Profile = () => {
         </GridItem>
         <GridItem w="100%" h="38vh" bg="gray.200" boxShadow="md">
           <Box bg="white" w="100%" height="90%" p={4} color="white">
-            This is the Box
+            <RandomChart />
           </Box>
           <Text fontSize="md" textAlign="center">
             Statistics Visualization #3
