@@ -16,7 +16,7 @@ model = RecEngine()# .cuda()
 # training_input    = torch.Tensor([[0.8, 8, 0.5, 5], [0.5, 9, 0.5, 7], [0.6, 8, 0.7, 7]])
 # training_expected = torch.Tensor([[1, -0.2], [0.5, -0.1], [-0.25, 0.05]]) #.view(-1,1)
 
-generated_cases = generate_n_tests(18000)
+generated_cases = generate_n_tests(30000)
 training_input = torch.Tensor(generated_cases["input"])
 training_expected = torch.Tensor(generated_cases["output"])
 
