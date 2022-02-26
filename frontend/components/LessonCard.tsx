@@ -2,15 +2,19 @@ import { Box } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 
-interface Props {
+export interface Lesson {
   title: string;
   slug: string;
   targetAge: number;
 }
 
-const LessonCard: React.FC<Props> = ({ title, slug, targetAge }) => {
+interface Props {
+  lesson: Lesson;
+}
+
+export const LessonCard: React.FC<Props> = ({ lesson }) => {
   return (
-    <Link href={`/lesson/${slug}`}>
+    <Link href={`/lesson/${lesson.slug}`}>
       <Box
         style={{
           minWidth: "250px",
@@ -21,12 +25,10 @@ const LessonCard: React.FC<Props> = ({ title, slug, targetAge }) => {
           cursor: "pointer",
         }}
       >
-        <Box>Title: {title}</Box>
-        <Box>Slug: {slug}</Box>
-        <Box>Target age: {targetAge}</Box>
+        <Box>Title: {lesson.title}</Box>
+        <Box>Slug: {lesson.slug}</Box>
+        <Box>Target age: {lesson.targetAge}</Box>
       </Box>
     </Link>
   );
 };
-
-export default LessonCard;

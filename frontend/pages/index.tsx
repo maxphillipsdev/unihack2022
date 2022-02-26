@@ -3,9 +3,58 @@ import { Box, Container, Flex, HStack, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Link from "next/link";
 import HeaderSection from "../components/HeaderSection";
-import LessonCard from "../components/LessonCard";
 import { Heading } from "@chakra-ui/react";
 import StudentParameters from "../components/StudentParameters";
+import { Rail } from "../components/Rail";
+
+// TODO: this data should come from somewhere
+const lessonData = [
+  {
+    name: "Recommended",
+    lessons: [
+      {
+        title: "Title here",
+        slug: "slug-here",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        targetAge: 8
+      }
+    ]
+  },
+  {
+    name: "Mathematics",
+    lessons: [
+      {
+        title: "Title here",
+        slug: "slug-here",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        targetAge: 8
+      }
+    ]
+  },
+  {
+    name: "Physics",
+    lessons: [
+      {
+        title: "Title here",
+        slug: "slug-here",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        targetAge: 8
+      }
+    ]
+  }
+];
 
 const Home: NextPage = () => {
   return (
@@ -22,84 +71,15 @@ const Home: NextPage = () => {
             h="90%"
           >
             <Flex justify="center" align="center">
-              <Text>Student Profile</Text>
+              <Text>Studentr Profile</Text>
             </Flex>
           </Box>
         </Link>
       </Box>
-      <Box style={{ margin: "10px" }}>
-        <Heading size="lg" style={{ margin: "10px" }}>
-          Recommended
-        </Heading>
-        <HStack
-          as="section"
-          id="recommended-rail"
-          overflowX="scroll"
-          p={3}
-          bgColor="gray.400"
-          style={{
-            margin: "14px",
-            borderRadius: "3px",
-          }}
-        >
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={5}
-          ></LessonCard>
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={8}
-          ></LessonCard>
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={6}
-          ></LessonCard>
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={5}
-          ></LessonCard>
-        </HStack>
-      </Box>
-      <Box style={{ margin: "10px" }}>
-        <Heading size="lg" style={{ margin: "10px" }}>
-          Numeracy
-        </Heading>
-        <HStack
-          as="section"
-          id="lessons-rail"
-          overflowX="scroll"
-          p={3}
-          bgColor="gray.400"
-          style={{
-            margin: "14px",
-            borderRadius: "3px",
-          }}
-        >
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={8}
-          ></LessonCard>
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={6}
-          ></LessonCard>
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={4}
-          ></LessonCard>
-          <LessonCard
-            title="Title here"
-            slug="slug-here"
-            targetAge={8}
-          ></LessonCard>
-        </HStack>
+      <Box>
+        {lessonData.map((category) => (
+          <Rail category={category} key={category.name} />
+        ))}
       </Box>
     </Flex>
   );
