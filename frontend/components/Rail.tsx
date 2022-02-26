@@ -4,7 +4,7 @@ import React from "react";
 import { LessonCard, Lesson } from "./LessonCard";
 
 export interface Category {
-	name: string;
+  name: string;
   lessons: Lesson[];
 }
 
@@ -15,14 +15,18 @@ interface Props {
 export const Rail: React.FC<Props> = ({ category }) => {
   return (
     <Box>
-      <Heading size="lg" style={{ margin: "10px", marginBottom: "0px", marginTop: "0px" }}>
+      <Heading
+        size="lg"
+        style={{
+          margin: "10px",
+          marginBottom: "0px",
+          marginTop: "0px",
+          fontFamily: "AtlassianText",
+        }}
+      >
         {category.name}
       </Heading>
-      <Box
-        overflowX="scroll"
-        whiteSpace="nowrap"
-        paddingLeft="5px"
-      >
+      <Box overflowX="scroll" whiteSpace="nowrap" paddingLeft="5px">
         {category.lessons.map((lesson) => (
           <LessonCard lesson={lesson} key={lesson.slug} />
         ))}

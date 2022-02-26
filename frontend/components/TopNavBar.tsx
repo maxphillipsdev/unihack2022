@@ -89,14 +89,14 @@ export default function Navbar() {
               display="flex"
               alignItems="center"
             >
-              <FcGraduationCap />
+              <img src="https://i.ibb.co/tLdhGf8/learnery.png" width="35" />
               <VisuallyHidden>Choc</VisuallyHidden>
             </chakra.a>
 
             <HStack spacing={3} display={{ base: "none", md: "inline-flex" }}>
               <Link href="/">
-                <Button variant="ghost" size="sm">
-                  Education App
+                <Button variant="ghost" size="sm" style={{ fontSize: "130%" }}>
+                  Learnery
                 </Button>
               </Link>
               <Button
@@ -106,6 +106,7 @@ export default function Navbar() {
                 onClick={() => {
                   location.href = "http://localhost:3333";
                 }}
+                style={{ fontSize: "105%", color: "#1d3557" }}
               >
                 Therapy
               </Button>
@@ -119,6 +120,7 @@ export default function Navbar() {
             {/* <Box style={{ fontSize: "75%", color: "darkslategray" }}>
               Welcome Max
             </Box> */}
+            {/* <FcGraduationCap size={24} /> */}
             <Link href="/student-profile">
               <Avatar
                 style={{ cursor: "pointer" }}

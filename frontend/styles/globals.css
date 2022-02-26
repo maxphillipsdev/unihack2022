@@ -11,3 +11,41 @@ body,
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* ------------------------------ Custom Fonts ------------------------------ */
+
+@font-face {
+  font-family: AtlassianText;
+  src: local("AtlassianText"),
+    url(../assets/fonts/atlassian/CharlieText-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AtlassianText;
+  src: local("AtlassianText"),
+    url(../assets/fonts/atlassian/CharlieText-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AtlassianText;
+  src: local("AtlassianText"),
+    url(../assets/fonts/atlassian/CharlieText-Italic.ttf) format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: AtlassianText;
+  src: local("AtlassianText"),
+    url(../assets/fonts/atlassian/CharlieText-BoldItalic.ttf) format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+body {
+  font-family: "AtlassianText" !important;
+}

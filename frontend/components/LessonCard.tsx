@@ -20,14 +20,14 @@ export const LessonCard: React.FC<Props> = ({ lesson }) => {
         style={{
           width: "250px",
           background: "white",
-          borderRadius: "15px",
+          borderRadius: "4px",
           cursor: "pointer",
           boxShadow: "0px 5px 10px 0px hsl(0deg 0% 0% / 20%)",
           overflow: "hidden",
           margin: "10px",
           marginLeft: "5px",
           marginRight: "5px",
-          display: "inline-block"
+          display: "inline-block",
         }}
       >
         <Image src={lesson.image} />

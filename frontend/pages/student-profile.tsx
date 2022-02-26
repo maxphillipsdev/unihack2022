@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, GridItem, Box, Text } from "@chakra-ui/react";
 import StudentHistory from "../components/StudentHistory";
+import StudentRadialBar from "../components/StudentRadialBar";
 
 const Profile = () => {
   return (
@@ -17,7 +18,7 @@ const Profile = () => {
         </GridItem>
         <GridItem w="100%" h="38vh" bg="gray.200" boxShadow="md">
           <Box bg="white" w="100%" height="90%" p={4} color="white">
-            This is the Box
+            <StudentRadialBar />
           </Box>
           <Text fontSize="md" textAlign="center">
             Statistics Visualization #1
