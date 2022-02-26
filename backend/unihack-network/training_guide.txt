@@ -1,0 +1,137 @@
+
+Goal: Given the student's performance data and profile, recommend the next
+      lesson to take and at what difficulty.
+
+1. Define the network input/output
+    Input layer:  vector of (score, lesson_target_age, curr_competency, curr_age)
+    Output layer: vector of (age_delta, priority_delta)
+2. Design the 'ideal' network architecture (LSTM?)
+3. Decide the rudimentary version we'll have for this hackathon (3-layer network?)
+
+
+On lesson completion, we get sent:
+
+1. performance data
+    {
+        category: "numeracy",
+        score: 0.5,
+        lessonTargetAge: 8.0
+    }
+    Feed to network: score=0.5, lesson_target_age=8 (maybe normalise to 0..1)
+
+2. student competencies (values in range [0..1]): 
+    {
+        numeracy: 0.1,
+        # reading:  0.5,
+        # grammar:  0.6,
+        # emotion:  0.05
+    }
+    Feed to network just the category of interest (numeracy in this example): curr_competency=0.1
+
+3. student profile:
+    {
+        age: 5.0,
+        disabilityType: "autism"   --> (ideally have different logic for different disabilities)
+    }
+    Feed to network: curr_age=5
+
+4. (Ideally) Historical performance data --> LSTM (type of RNN)
+    PerformanceData[]    (see step 1)
+
+Output: 
+    Output layer: 
+        Naive: vector of 2 (target age for curr category, priority for curr category)
+        Ideal: vector of 8 (4 for target ages, 4 for priority)
+
+    Endpoint returns: {
+        numeracy: (ageDelta: 0.8, priority_delta: -0.1),
+        reading:  (ageDelta: 0, priority_delta: 0),
+        grammar:  (ageDelta: 0, priority_delta: 0),
+        emotion:  (ageDelta: 0, priority_delta: 0)
+    }
+    
+    (Ideally) If you do well in category x, but based on historical data, you
+    have done category y less frequently and have made less improvement, then
+    category y would have a higher priority than x.
+
+    (Naive) If you do well in x, increase its targetAge, lower priority, leave
+    all else unchanged.
+
+
+Backend returns a new student competencies object:
+    {
+        numeracy: 0.3,
+        reading:  0.5,
+        grammar:  0.6,
+        emotion:  0.05
+    }
+
+--------------------------------------------------------------------------------
+
+We need to train the model so that:
+- If you do well in x, increase targetAge, lower priority
+- If you do bad in x,  decrease targetAge, increase priority
+- (Ideally) Failing on lower  lesson_target_age should penalise heavily
+            Failing on higher lesson_target_age should penalise lightly 
+            Succeeding on lower  lesson_target_age should reward lightly
+            Succeeding on higher lesson_target_age should reward heavily
+
+========== Training Data ==========
+    Idea: generate inputs and expected outputs
+
+    Input layer:  vector of (score, lesson_target_age, curr_competency, curr_age)
+    Output layer: vector of (age_delta, priority_delta)
+
+# ===== Higher Difficulty =====
+
+# Higher difficulty, higher score (you do WAY BETTER)
+# Result: increase recommended age, drop priority by a lot
+Test case 1 (you do A LOT better in X): 
+    I: (0.8, 8, 0.5, 5)
+    O: (1, -0.2)
+
+# Higher difficulty, similar score (you do a bit better)
+# Result: slightly increase recommended age, slightly drop priority 
+    I: (0.5, 9, 0.5, 7)
+    O: (0.5, -0.1)
+
+# Higher difficulty, worse score (you do a bit worse)
+# Result: slightly decrease rec age, slightly inc priority
+    I: (0.6, 8, 0.7, 7)
+    O: (-0.25, 0.05)
+...
+
+# ===== Lower Difficulty =====
+
+# Lower difficulty, lower score (you do WAY WORSE)
+# Result: decrease recommended age, increase priority by a lot
+    I: (0.3, 4, 0.5, 5)
+    O: (-1, 0.2)
+
+# Lower difficulty, similar score (you do a bit worse)
+# Result: slightly dec recommended age, slightly inc priority 
+    I: (0.55, 3, 0.5, 4)
+    O: (-0.5, 0.1)
+
+# Lower difficulty, higher score (you do a bit better)
+# Result: slightly inc recommended age, slightly drop priority 
+    I: (0.8, 3, 0.5, 4)
+    O: (0.25, -0.05)
+
+# ===== Same Difficulty =====
+
+# Same difficulty, higher score 
+# Result: slightly inc rec age, slightly drop priority
+    I: (0.8, 5, 0.5, 5)
+    O: (0.5, -0.1)
+
+# Same difficulty, same score (you stay the same)
+# Result: no deltas 
+    I: (0.5, 5, 0.5, 5)
+    O: (0, 0)
+
+# Same difficulty, lower score
+# Result: slightly dec rec age, slightly inc priority
+    I: (0.5, 5, 0.5, 5)
+    O: (-0.5, 0.1)
+
