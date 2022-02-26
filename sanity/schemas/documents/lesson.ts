@@ -30,7 +30,7 @@ export default {
       name: "content",
       type: "array",
       title: "Lesson sections",
-      of: [{ type: "textSection" }],
+      of: [{ type: "textSection" }, { type: "mcqSection" }],
     },
   ],
 };
