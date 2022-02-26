@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, GridItem, Box, Text } from "@chakra-ui/react";
+import StudentHistory from "../components/StudentHistory";
 
 const Profile = () => {
   return (
@@ -8,7 +9,7 @@ const Profile = () => {
       <Grid templateColumns="repeat(2, 1fr)" gap={6} sx={{ mx: "6" }}>
         <GridItem w="100%" h="38vh" bg="gray.200" boxShadow="md">
           <Box bg="white" w="100%" height="90%" p={4} color="white">
-            This is the Box
+            <StudentHistory />
           </Box>
           <Text fontSize="md" textAlign="center">
             Lesson History
@@ -39,6 +40,7 @@ const Profile = () => {
           </Text>
         </GridItem>
       </Grid>
+      <br />
     </>
   );
 };
