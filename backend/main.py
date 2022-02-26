@@ -5,7 +5,7 @@ from fastapi import FastAPI
 import numpy as np
 
 import torch
-import network
+import network_model
 
 app = FastAPI()
 
@@ -17,11 +17,14 @@ model.eval()                                              # Turns off autograd
 
 def predict(lesson_score: float, lesson_target_age: float, curr_competency: float, curr_age: float) -> {}:
     # TODO replace with input
-    input =  torch.Tensor(np.array([0, 0]))
+    input =  torch.Tensor([lesson_score, lesson_target_age, curr_competency, curr_age])
     output = model(input)
     print("output = ", output.tolist())
-    print("output = ", output.tolist()[0])
-    return {}
+    l = output.tolist()
+    return {
+        "age_delta": l[0],
+        "priority_delta": l[1]
+    }
 
 
 @app.get("/recommendation")
