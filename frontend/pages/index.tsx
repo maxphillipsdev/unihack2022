@@ -15,11 +15,13 @@ const lessonData = [
       {
         title: "Title here",
         slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
         targetAge: 8
       },
       {
         title: "Title here",
         slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
         targetAge: 8
       }
     ]
@@ -30,11 +32,55 @@ const lessonData = [
       {
         title: "Title here",
         slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
         targetAge: 8
       },
       {
         title: "Title here",
         slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+        targetAge: 8
+      },
+      {
+        title: "Title here",
+        slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
         targetAge: 8
       }
     ]
@@ -45,11 +91,13 @@ const lessonData = [
       {
         title: "Title here",
         slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
         targetAge: 8
       },
       {
         title: "Title here",
         slug: "slug-here",
+        image: "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
         targetAge: 8
       }
     ]
@@ -71,7 +119,7 @@ const Home: NextPage = () => {
             h="90%"
           >
             <Flex justify="center" align="center">
-              <Text>Studentr Profile</Text>
+              <Text>Student Profile</Text>
             </Flex>
           </Box>
         </Link>

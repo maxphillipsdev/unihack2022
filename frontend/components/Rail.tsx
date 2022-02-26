@@ -14,24 +14,19 @@ interface Props {
 
 export const Rail: React.FC<Props> = ({ category }) => {
   return (
-    <Box style={{ margin: "10px" }}>
-      <Heading size="lg" style={{ margin: "10px" }}>
+    <Box>
+      <Heading size="lg" style={{ margin: "10px", marginBottom: "0px", marginTop: "0px" }}>
         {category.name}
       </Heading>
-      <HStack
-        as="section"
+      <Box
         overflowX="scroll"
-        p={3}
-        bgColor="gray.400"
-        style={{
-          margin: "14px",
-          borderRadius: "3px",
-        }}
+        whiteSpace="nowrap"
+        paddingLeft="5px"
       >
-        {category.lessons.map((lesson) => {
-          <LessonCard lesson={lesson} />
-        })}
-      </HStack>
+        {category.lessons.map((lesson) => (
+          <LessonCard lesson={lesson} key={lesson.slug} />
+        ))}
+      </Box>
     </Box>
   );
 };
