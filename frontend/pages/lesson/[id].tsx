@@ -11,12 +11,9 @@ const Lesson = () => {
       flexDir="column"
       width="100%"
       justify="space-evenly"
-      height="100vh"
+      style={{ height: "calc(100vh - 64px)" }}
     >
-      <HStack
-        h="100%"
-        style={{ height: "calc(100vh - 48px)", marginTop: "48px" }}
-      >
+      <HStack h="100%">
         <Box w="50%" h="100%" bg="tomato">
           Left half
         </Box>
