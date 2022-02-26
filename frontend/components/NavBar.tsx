@@ -22,6 +22,7 @@ const NavBar: FC = () => {
       paddingY={3}
       paddingX={5}
       background="white"
+      style={{ position: "fixed", width: "100vw" }}
     >
       <Box flexGrow={1} textAlign="left">
         Not Educatory
