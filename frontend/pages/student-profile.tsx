@@ -5,6 +5,7 @@ import StudentRadialBar from "../components/StudentRadialBar";
 import SubjectCompentencyChart from "../components/SubjectCompentencyChart";
 import RandomChart from "../components/RandomChart";
 import StudentParameters from "../components/StudentParameters";
+import MCQ from "../components/MCQ";
 
 const Profile = () => {
   return (
