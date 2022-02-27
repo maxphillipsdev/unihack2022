@@ -24,8 +24,22 @@ export const Rail: React.FC<Props> = ({ category }) => {
           fontFamily: "AtlassianText",
         }}
       >
-        {category.name}
+        {(category.name === "Recommended" && "Today's Recommended Lessons") ||
+          category.name}
       </Heading>
+      <p style={{ margin: 10, fontSize: "120%" }}>
+        {category.name === "Recommended" ? (
+          <span>
+            Here's what <strong>Learnery</strong> suggests Max Phillips to do
+            next!
+          </span>
+        ) : (
+          <span>
+            Explore Learnery's curated lessons on{" "}
+            <strong>{category.name}</strong>!
+          </span>
+        )}
+      </p>
       <Box overflowX="scroll" whiteSpace="nowrap" paddingLeft="5px">
         {category.lessons.map((lesson) => (
           <LessonCard lesson={lesson} key={lesson.slug} />
