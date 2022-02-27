@@ -90,10 +90,12 @@ const Lesson = ({
               res.data.priority_delta,
           },
         });
-        setShowAnswers(true);
         // router.push("/");
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setShowAnswers(true);
+      });
   };
   return (
     <Flex

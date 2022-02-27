@@ -49,7 +49,7 @@ export const Rail: React.FC<Props> = ({ category }) => {
       </Heading>
       <p style={{ margin: 10, fontSize: "120%" }}>
         <span>
-          Explore Learnery's curated lessons on <strong>{category.name}</strong>
+          Explore Learnery{"'"}s curated lessons on <strong>{category.name}</strong>
           !
         </span>
       </p>
