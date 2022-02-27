@@ -21,6 +21,7 @@ import { Parallax, Background } from "react-parallax";
 import { ImStatsBars } from "react-icons/im";
 import { RiPsychotherapyFill } from "react-icons/ri";
 import { FaGraduationCap } from "react-icons/fa";
+import { useState } from "react";
 
 const insideStyles = {
   background: "white",
@@ -33,25 +34,25 @@ const insideStyles = {
 
 // TODO: this data should come from somewhere
 const lessonData = [
-  {
-    name: "Recommended",
-    lessons: [
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-    ],
-  },
+  // {
+  //   name: "Recommended",
+  //   lessons: [
+  //     {
+  //       title: "Title here",
+  //       slug: "slug-here",
+  //       image:
+  //         "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+  //       targetAge: 8,
+  //     },
+  //     {
+  //       title: "Title here",
+  //       slug: "slug-here",
+  //       image:
+  //         "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+  //       targetAge: 8,
+  //     },
+  //   ],
+  // },
   {
     name: "Mathematics",
     lessons: [
@@ -142,6 +143,18 @@ const lessonData = [
 ];
 
 const Home: NextPage = () => {
+  // ===== Recommended lessons ======
+
+  const [recommendedLessons, setRecommendedLessons] = useState([
+    {
+      title: "How to tie your shoes",
+      slug: "how-to-tie-ur-shoes",
+      image: "",
+    },
+  ]);
+
+  // ================================
+
   return (
     <Flex as="main" flexDir="column" width="100%" height="100vh">
       <SplashScreen />

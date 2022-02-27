@@ -21,9 +21,18 @@ def predict(lesson_score: float, lesson_target_age: float, curr_competency: floa
     output = model(input)
     print("output = ", output.tolist())
     l = output.tolist()
+
+    competency_delta = 0
+
+    if l[0] > 0:
+        competency_delta = 0.1 
+    if l[0] < 0:
+        competency_delta = -0.1 
+    
     return {
         "age_delta": l[0],
-        "priority_delta": l[1]
+        "priority_delta": l[1],
+        "competency_delta": competency_delta 
     }
 
 
