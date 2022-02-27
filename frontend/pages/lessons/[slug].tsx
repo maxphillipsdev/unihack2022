@@ -13,12 +13,14 @@ const MCQs = [
     answer: "1000 years",
   },
   {
-    question: "For what period of time did Ancient Rome be ruled by the Republic?",
+    question:
+      "For what period of time did Ancient Rome be ruled by the Republic?",
     options: ["2BC - 1BC", "509BC - 45BC", "60BC - 45BC"],
     answer: "509BC - 45BC",
   },
   {
-    question: "According to the lesson, what areas did Ancient Rome effect for future civilization",
+    question:
+      "According to the lesson, what areas did Ancient Rome effect for future civilization",
     options: ["Government", "Painting", "Cooking"],
     answer: "Government",
   },
@@ -30,7 +32,7 @@ const Lesson = ({
   const [answers, setAnswers] = useState(["", "", ""]);
   const [showAnswers, setShowAnswers] = useState(false);
   console.log(lesson);
-
+  const router = useRouter();
   // Answers
   const onSubmit = () => {
     console.log(answers);
@@ -79,8 +81,20 @@ const Lesson = ({
                 />
               );
             })}
-            <Button size="lg" padding="2" onClick={onSubmit} colorScheme="blue">
-              Submit
+            <Button
+              size="lg"
+              padding="2"
+              onClick={
+                showAnswers
+                  ? () => {
+                      // try again
+                      router.push("/")
+                    }
+                  : onSubmit
+              }
+              colorScheme="blue"
+            >
+              {showAnswers ? "Return" : "Submit"}
             </Button>
             {/* {lesson.content.map((section: any) => {
               if (section._type === "mcqSection") {
