@@ -62,7 +62,7 @@ const SplashScreen = ({ brand = "Learnery" }) => {
           width: "100%",
           color: "white",
           fontWeight: "bold",
-          fontSize: "250%",
+          fontSize: "450%",
           // background: '#222222'
         }}
       >
@@ -78,7 +78,7 @@ const SplashScreen = ({ brand = "Learnery" }) => {
           style={{
             display: "block",
             margin: "0 auto",
-            maxWidth: 100,
+            maxWidth: 200,
           }}
         ></motion.img>
         {brand.split("").map((character, i) => (
