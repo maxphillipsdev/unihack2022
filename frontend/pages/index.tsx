@@ -114,30 +114,32 @@ const Home: NextPage = ({
 
   const [recommendedLessons, setRecommendedLessons] = useState([
     {
-      title: "How to tie your shoes",
+      title: "Reading I",
       slug: "how-to-tie-ur-shoes",
-      image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+      image: "https://desktime.com/blog/wp-content/uploads/2015/09/reading.png",
       targetAge: 5,
+      priority: 0.5,
     },
     {
-      title: "How to tie your shoes",
+      title: "Reading II",
       slug: "how-to-tie-ur-shoes",
       image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+        "https://img-cdn.inc.com/image/upload/w_1920,h_1080,c_fill/images/panoramic/GettyImages-1301650294_463234_ofai7p.jpg",
       targetAge: 6,
+      priority: 0.5,
     },
   ]);
 
   useEffect(() => {
-    // setRecommendedLessons(recommendedLessons.sort)
+    recommendedLessons.sort((a, b) => b.priority - a.priority);
+    setRecommendedLessons([...recommendedLessons]);
   }, []);
 
   // ================================
 
   return (
     <Flex as="main" flexDir="column" width="100%" height="100vh">
-      <SplashScreen />
+      {/* <SplashScreen /> */}
       <Box
         as="section"
         id="student-profile"
@@ -173,7 +175,7 @@ const Home: NextPage = ({
         style={{
           margin: "0 auto",
           padding: "52px",
-          marginTop: "270px",
+          marginTop: "0px",
         }}
       >
         <motion.div

@@ -9,7 +9,29 @@ interface GoalProps {
 }
 
 const Goal: React.FC<GoalProps> = ({ name, progress, color }) => {
-  return <div>goal</div>;
+  return (
+    <Box>
+      <HStack>
+        <Text>{name}</Text>
+        <Text opacity={0.6}>
+          {progress[0]}/{progress[1]}
+        </Text>
+      </HStack>
+      <Box
+        background="hsl(0, 0%, 85%)"
+        width="100%"
+        height="15px"
+        borderRadius="1000px"
+      >
+        <Box
+          backgroundColor={color}
+          width={`${(progress[0] / progress[1]) * 100}%`}
+          height="100%"
+          borderRadius="1000px"
+        />
+      </Box>
+    </Box>
+  );
 };
 
 interface Props {
@@ -34,9 +56,19 @@ export const StudentSummary: React.FC<Props> = ({ name, image, goals }) => {
         textAlign="center"
       >
         <Text fontSize="30px">
-          Welcome, <strong>{name}</strong>
+          Welcome, <strong>{name} 👋</strong>
         </Text>
-        <Goal />
+        <Goal name="Daily" progress={goals.daily} color="hsl(215, 60%, 62%)" />
+        <Goal
+          name="Weekly"
+          progress={goals.weekly}
+          color="hsl(215, 60%, 42%)"
+        />
+        <Goal
+          name="Monthly"
+          progress={goals.monthly}
+          color="hsl(215, 60%, 27%)"
+        />
       </Box>
     </Flex>
   );
