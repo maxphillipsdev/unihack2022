@@ -25,7 +25,7 @@ import SplashScreen from "../components/SplashScreen";
 import StudentParameters from "../components/StudentParameters";
 import client from "../lib/client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import wallpaper from "../assets/img/education-wallpaper.png";
 
 const insideStyles = {
@@ -66,7 +66,7 @@ const lessonData = [
         slug: "slug-here",
         image:
           "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
+        targetAge: 6,
       },
       {
         title: "Title here",
@@ -80,49 +80,7 @@ const lessonData = [
         slug: "slug-here",
         image:
           "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
-      },
-      {
-        title: "Title here",
-        slug: "slug-here",
-        image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
+        targetAge: 5,
       },
     ],
   },
@@ -171,6 +129,10 @@ const Home: NextPage = ({
     },
   ]);
 
+  useEffect(() => {
+    // setRecommendedLessons(recommendedLessons.sort)
+  }, []);
+
   // ================================
 
   return (
@@ -193,17 +155,18 @@ const Home: NextPage = ({
             src="https://fuse.education.vic.gov.au/Content/images/DET_Fuse_Header.jpg"
           ></motion.img>
         </Link>
-
-        <StudentSummary
-          name="Max Phillips"
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoi5pz196m8gkB1QJO27yu1mz8WC-Qa0E3fsU2_VVTvj3LerDF42NNzXdM76RFs2sfDEY&usqp=CAU"
-          goals={{
-            daily: [5, 20],
-            weekly: [50, 70],
-            monthly: [100, 280],
-          }}
-        />
       </Box>
+
+      <StudentSummary
+        name="Max Phillips"
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoi5pz196m8gkB1QJO27yu1mz8WC-Qa0E3fsU2_VVTvj3LerDF42NNzXdM76RFs2sfDEY&usqp=CAU"
+        goals={{
+          daily: [5, 20],
+          weekly: [50, 70],
+          monthly: [100, 280],
+        }}
+      />
+
       <div style={{ height: "200px" }} />
       <Box
         width="85%"
@@ -219,7 +182,7 @@ const Home: NextPage = ({
           transition={{ duration: 1 }}
         >
           <Heading
-            size="lg"
+            size="xl"
             style={{
               margin: "10px",
               marginBottom: "0px",
@@ -242,7 +205,7 @@ const Home: NextPage = ({
           </p>
           <HStack>
             {recommendedLessons.map((lesson, i) => (
-              <LessonCard lesson={lesson} isRecommended={i === 0} />
+              <LessonCard lesson={lesson} isRecommended />
             ))}
           </HStack>
         </motion.div>
@@ -254,7 +217,29 @@ const Home: NextPage = ({
           padding: "52px",
         }}
       >
-        {categories.map((category: any) => (
+        {/* {categories.map((category: any) => (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.75 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <Rail category={category} key={category.title} />
+          </motion.div>
+        ))} */}
+
+        <Heading
+          size="xl"
+          style={{
+            margin: "10px",
+            marginBottom: "0px",
+            marginTop: "0px",
+            fontFamily: "AtlassianText",
+            textAlign: "center",
+          }}
+        >
+          Curated Lessons
+        </Heading>
+        {lessonData.map((category: any) => (
           <motion.div
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -268,19 +253,19 @@ const Home: NextPage = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const lessons = await client.fetch(
-    `
-    *[_type == "lesson"]
-  `
-  );
-  const categories = await client.fetch(
-    `
-    *[_type == "category"]
-  `
-  );
-  return {
-    props: { lessons, categories },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const lessons = await client.fetch(
+//     `
+//     *[_type == "lesson"]
+//   `
+//   );
+//   const categories = await client.fetch(
+//     `
+//     *[_type == "category"]
+//   `
+//   );
+//   return {
+//     props: { lessons, categories },
+//   };
+// };
 export default Home;
