@@ -6,6 +6,7 @@ import {
   PolarRadiusAxis,
   Radar,
   RadarChart,
+  ResponsiveContainer,
 } from "recharts";
 
 const SubjectCompentencyChart = () => {
@@ -49,8 +50,8 @@ const SubjectCompentencyChart = () => {
   ];
 
   return (
-    <div>
-      <RadarChart outerRadius={120} width={900} height={330} data={data}>
+    <ResponsiveContainer width="100%" height="100%">  
+      <RadarChart outerRadius={150} width={900} height={330} data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" />
         <PolarRadiusAxis angle={30} domain={[0, 150]} />
@@ -70,7 +71,7 @@ const SubjectCompentencyChart = () => {
         />
         <Legend />
       </RadarChart>
-    </div>
+    </ResponsiveContainer>
   );
 };
 

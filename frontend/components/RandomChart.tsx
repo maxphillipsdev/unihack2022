@@ -4,6 +4,7 @@ import {
   BarChart,
   CartesianGrid,
   Legend,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -50,8 +51,8 @@ const RandomChart = () => {
   ];
 
   return (
-    <div>
-      <BarChart width={850} height={375} data={data} maxBarSize={150}>
+    <ResponsiveContainer width="100%" height="100%">  
+        <BarChart width={850} height={375} data={data} maxBarSize={150}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="subject" />
         <YAxis />
@@ -60,7 +61,7 @@ const RandomChart = () => {
         <Bar name="Average" dataKey="A" fill="#8884d8" />
         <Bar name="You" dataKey="B" fill="#82ca9d" />
       </BarChart>
-    </div>
+    </ResponsiveContainer>
   );
 };
 

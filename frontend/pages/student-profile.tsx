@@ -4,6 +4,7 @@ import StudentHistory from "../components/StudentHistory";
 import StudentRadialBar from "../components/StudentRadialBar";
 import SubjectCompentencyChart from "../components/SubjectCompentencyChart";
 import RandomChart from "../components/RandomChart";
+import StudentParameters from "../components/StudentParameters";
 
 const Profile = () => {
   return (
@@ -11,7 +12,14 @@ const Profile = () => {
       <br />
       <Grid templateColumns="repeat(2, 1fr)" gap={6} sx={{ mx: "6" }}>
         <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
-          <Box bg="white" rounded="sm" w="100%" height="93%" p={4} color="white">
+          <Box
+            bg="white"
+            rounded="sm"
+            w="100%"
+            height="93%"
+            p={4}
+            color="white"
+          >
             <StudentHistory />
           </Box>
           <Text fontSize="lg" textAlign="center">
@@ -19,7 +27,14 @@ const Profile = () => {
           </Text>
         </GridItem>
         <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
-          <Box bg="white" rounded="sm" w="100%" height="93%" p={4} color="white">
+          <Box
+            bg="white"
+            rounded="sm"
+            w="100%"
+            height="93%"
+            p={4}
+            color="white"
+          >
             <StudentRadialBar />
           </Box>
           <Text fontSize="lg" textAlign="center">
@@ -27,7 +42,14 @@ const Profile = () => {
           </Text>
         </GridItem>
         <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
-          <Box bg="white" rounded="sm" w="100%" height="93%" p={4} color="white">
+          <Box
+            bg="white"
+            rounded="sm"
+            w="100%"
+            height="93%"
+            p={4}
+            color="white"
+          >
             <SubjectCompentencyChart />
           </Box>
           <Text fontSize="lg" textAlign="center">
@@ -35,8 +57,16 @@ const Profile = () => {
           </Text>
         </GridItem>
         <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
-          <Box bg="white" rounded="sm" w="100%" height="93%" p={4} color="white">
-            <RandomChart />
+          <Box
+            bg="white"
+            rounded="sm"
+            w="100%"
+            height="93%"
+            p={4}
+            color="white"
+          >
+            {/* <RandomChart /> */}
+            <StudentParameters />
           </Box>
           <Text fontSize="lg" textAlign="center">
             Statistics Visualization #3
