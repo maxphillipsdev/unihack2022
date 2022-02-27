@@ -173,14 +173,41 @@ const Lesson = ({
             </Box>
           )}
           {mode === 2 && (
-            <HiOutlinePlay
-              style={{
-                fontSize: "300%",
-                position: "absolute",
-                top: "20%",
-                left: "49%",
-              }}
-            />
+            <Box>
+              <p
+                style={{
+                  fontSize: "100%",
+                  position: "absolute",
+                  top: "30%",
+                  left: "50%",
+                  transform: "translate(-50%)",
+                  cursor: "pointer",
+                }}
+              >
+                Click to hear a lesson on Ancient Rome!
+              </p>
+              <HiOutlinePlay
+                style={{
+                  fontSize: "300%",
+                  position: "absolute",
+                  top: "25%",
+                  left: "47.5%",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  alert("Play");
+                  var msg = new SpeechSynthesisUtterance();
+                  msg.text = `Ancient Rome was a powerful and important civilization that
+                  ruled much of Europe for nearly 1000 years. The culture of
+                  Ancient Rome was spread throughout Europe during its rule. As a
+                  result, Rome's culture still has an impact in the Western world
+                  today. The basis for much of Western culture comes from Ancient
+                  Rome, especially in areas such as government, engineering,
+                  architecture, language, and literature.`;
+                  window.speechSynthesis.speak(msg);
+                }}
+              />
+            </Box>
           )}
         </Box>
         <Box w="50%" h="100%">

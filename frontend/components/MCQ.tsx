@@ -26,7 +26,8 @@ const MCQ: React.FC<{
   return (
     <>
       <Container sx={{ backgroundColor: "white" }} width="3xl" padding={4}>
-        <Heading>{question}</Heading>
+        <Heading size="md">{question}</Heading>
+        <br />
         <RadioGroup>
           <Stack spacing={3} direction="column">
             {options.map((option) => {
