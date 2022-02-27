@@ -16,7 +16,7 @@ const Error404 = () => {
       <Text>
         Due to time constraints, this lessons has not been developed yet.
         <br />
-        Check out one of our recommended lessons for now.
+        Check out the {'"'}Reading I{'"'} lesson!
       </Text>
       <Link href="/" textDecoration="none">
         <Button

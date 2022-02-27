@@ -293,7 +293,7 @@ const Home: NextPage = ({
                 <LessonCard
                   key={i}
                   lesson={lesson}
-                  isRecommended
+                  isRecommended={i === 0}
                   lessons={recommendedLessons}
                   setLessons={setRecommendedLessons}
                   priority={lesson.priority}
@@ -331,7 +331,7 @@ const Home: NextPage = ({
         >
           Curated Lessons
         </Heading>
-        {lessonData.map((category: any,i) => (
+        {lessonData.map((category: any, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0.75 }}
