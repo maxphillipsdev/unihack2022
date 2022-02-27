@@ -53,7 +53,7 @@ const StudentParameters: React.FC<Props> = () => {
   return (
     <Box>
       {parameters.map((parameter) => (
-        <HStack>
+        <HStack key={parameter.name}>
           <p
             style={{ marginRight: "10px", textAlign: "right", width: "250px" }}
           >
