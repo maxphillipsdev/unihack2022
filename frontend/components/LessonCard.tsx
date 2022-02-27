@@ -1,4 +1,5 @@
-import { Box, HStack, Image } from "@chakra-ui/react";
+import { Box, Button, HStack, Heading, Image, Text } from "@chakra-ui/react";
+
 import Link from "next/link";
 import React from "react";
 
@@ -11,35 +12,59 @@ export interface Lesson {
 
 interface Props {
   lesson: Lesson;
+  isRecommended?: boolean;
 }
 
-export const LessonCard: React.FC<Props> = ({ lesson }) => {
+export const LessonCard: React.FC<Props> = ({
+  lesson,
+  isRecommended = false,
+}) => {
   return (
-    <Link href={`/lesson/${lesson.slug}`}>
-      <Box
-        style={{
-          width: "480px",
-          background: "white",
-          borderRadius: "4px",
-          cursor: "pointer",
-          boxShadow: "0px 5px 10px 0px hsl(0deg 0% 0% / 20%)",
-          overflow: "hidden",
-          margin: "10px",
-          marginLeft: "5px",
-          marginRight: "5px",
-          display: "inline-block",
-        }}
-      >
-        <HStack>
-          <Image src={lesson.image} style={{ maxWidth: "50%" }} />
-          <Box padding="16px">
-            <Box>{lesson.title}</Box>
-            <Box opacity="60%" style={{}}>
-              Target age: {lesson.targetAge}
-            </Box>
+    <div className="container">
+      <div className="card">
+        <div className="card-header">
+          <img src={lesson.image} alt="rover" />
+        </div>
+        <div className="card-body" style={{ textAlign: "" }}>
+          <HStack>
+            {isRecommended && (
+              <span style={{ fontSize: "115%" }} className="tag recommended">
+                Recommended!
+              </span>
+            )}
+            <span style={{ fontSize: "115%" }} className="tag tag-teal">
+              Age: {lesson.targetAge}
+            </span>
+          </HStack>
+          <Text
+            style={{
+              fontSize: "140%",
+              margin: 0,
+              marginTop: 10,
+              width: "100%",
+            }}
+          >
+            {lesson.title}
+          </Text>
+          <br />
+          <div className="user">
+            <img
+              src="https://studyinbaltics.ee/wp-content/uploads/2020/03/3799Ffxy.jpg"
+              alt="user"
+            />
+            <div className="user-info">
+              <h5>Julie Therapist</h5>
+              <small>1w ago</small>
+            </div>
+          </div>
+          <br />
+          <Box sx={{ textAlign: "center", width: "100%" }}>
+            <Link href={`/lessons/${lesson.slug}`}>
+              <Button>Start Lesson</Button>
+            </Link>
           </Box>
-        </HStack>
-      </Box>
-    </Link>
+        </div>
+      </div>
+    </div>
   );
 };

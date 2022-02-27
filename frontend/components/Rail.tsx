@@ -1,7 +1,9 @@
-import { Box, Heading, HStack } from "@chakra-ui/react";
+import { Box, HStack, Heading, Text } from "@chakra-ui/react";
+import { Lesson, LessonCard } from "./LessonCard";
+
 import Link from "next/link";
 import React from "react";
-import { LessonCard, Lesson } from "./LessonCard";
+import client from "../lib/client";
 
 export interface Category {
   name: string;
@@ -9,10 +11,29 @@ export interface Category {
 }
 
 interface Props {
-  category: Category;
+  category: any;
 }
 
 export const Rail: React.FC<Props> = ({ category }) => {
+  const [lessons, setLessons] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchLessons = async () => {
+      setLessons([]);
+      const id = category._id;
+      const lessons = await client.fetch(
+        `
+        *[_type == "lesson" && categories == $id in categories[]->_ref]
+      `,
+        {
+          id,
+        }
+      );
+      setLessons(lessons);
+    };
+    fetchLessons();
+  }, []);
+
   return (
     <Box>
       <Heading
@@ -24,26 +45,22 @@ export const Rail: React.FC<Props> = ({ category }) => {
           fontFamily: "AtlassianText",
         }}
       >
-        {(category.name === "Recommended" && "Today's Recommended Lessons") ||
-          category.name}
+        {category.title}
       </Heading>
       <p style={{ margin: 10, fontSize: "120%" }}>
-        {category.name === "Recommended" ? (
-          <span>
-            Here's what <strong>Learnery</strong> suggests Max Phillips to do
-            next!
-          </span>
-        ) : (
-          <span>
-            Explore Learnery's curated lessons on{" "}
-            <strong>{category.name}</strong>!
-          </span>
-        )}
+        <span>
+          Explore Learnery's curated lessons on{" "}
+          <strong>{category.title}</strong>!
+        </span>
       </p>
       <Box overflowX="scroll" whiteSpace="nowrap" paddingLeft="5px">
-        {category.lessons.map((lesson) => (
-          <LessonCard lesson={lesson} key={lesson.slug} />
-        ))}
+        {lessons.length > 0 ? (
+          lessons.map((lesson: any) => (
+            <LessonCard lesson={lesson} key={lesson.slug} />
+          ))
+        ) : (
+          <Text>Loading...</Text>
+        )}
       </Box>
     </Box>
   );

@@ -45,7 +45,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   `,
     { slug }
   );
-
   return {
     props: {
       lesson: lesson || null,

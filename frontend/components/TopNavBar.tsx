@@ -1,34 +1,34 @@
-import React from "react";
-
 import {
-  chakra,
-  Box,
-  Flex,
-  useColorModeValue,
-  VisuallyHidden,
-  HStack,
-  Button,
-  useDisclosure,
-  VStack,
-  IconButton,
-  CloseButton,
-  InputGroup,
-  InputLeftElement,
-  Input,
-  Avatar,
-} from "@chakra-ui/react";
-import { FcGraduationCap } from "react-icons/fc";
-import {
-  AiOutlineMenu,
+  AiFillBell,
   AiFillHome,
   AiOutlineInbox,
+  AiOutlineMenu,
   AiOutlineSearch,
-  AiFillBell,
 } from "react-icons/ai";
-import { BsFillCameraVideoFill } from "react-icons/bs";
+import {
+  Avatar,
+  Box,
+  Button,
+  CloseButton,
+  Flex,
+  HStack,
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  VStack,
+  VisuallyHidden,
+  chakra,
+  useColorModeValue,
+  useDisclosure,
+} from "@chakra-ui/react";
+
 import { AiFillDashboard } from "react-icons/ai";
-import Link from "next/link";
+import { BsFillCameraVideoFill } from "react-icons/bs";
+import { FcGraduationCap } from "react-icons/fc";
 import { ImStatsBars } from "react-icons/im";
+import Link from "next/link";
+import React from "react";
 
 export default function Navbar() {
   const bg = useColorModeValue("white", "gray.800");
@@ -42,7 +42,7 @@ export default function Navbar() {
         px={{ base: 2, sm: 4 }}
         py={4}
         shadow="md"
-        style={{ position: "fixed" }}
+        style={{ position: "fixed", zIndex: 10 }}
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <HStack display="flex" spacing={3} alignItems="center">
