@@ -85,7 +85,8 @@ const Lesson = ({
               res.data.priority_delta,
           },
         });
-        router.push("/");
+        setShowAnswers(true);
+        // router.push("/");
       })
       .catch(console.log);
   };
