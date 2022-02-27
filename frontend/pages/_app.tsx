@@ -1,10 +1,12 @@
 import "../styles/globals.css";
 
+import React from "react";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import { extendTheme } from "@chakra-ui/react";
-import { createContext, useMemo } from "react";
+import { createContext, useMemo, useState } from "react";
+import { CookiesProvider } from "react-cookie";
 
 const colors = {
   brand: {
@@ -16,51 +18,43 @@ const colors = {
 const theme = extendTheme({ colors });
 
 export const UserContext = createContext({
-  currAge: 6,
-  currCompetencies: {
-    numeracy: 0.5,
-    literacy: 0.5,
-    emotions: 0.5,
-    objects: 0.5,
-  },
-  currPriorities: {
-    numeracy: 0.5,
-    literacy: 0.5,
-    emotions: 0.5,
-    objects: 0.5,
-  },
-  currTargetAges: {
-    numeracy: 6,
-    literacy: 6,
-    emotions: 6,
-    objects: 6,
-  },
+  user: {},
+  setUser: (a: any) => {},
+  setCompetency: () => {},
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [competency, setCompetency] = useState(0.5);
+  const [user, setUser] = useState({
+    currAge: 6,
+    currCompetencies: {
+      numeracy: 0.5,
+      literacy: 0.5,
+      emotions: 0.5,
+      objects: 0.5,
+    },
+    currPriorities: {
+      numeracy: 0.5,
+      literacy: 0.5,
+      emotions: 0.5,
+      objects: 0.5,
+    },
+    currTargetAges: {
+      numeracy: 6,
+      literacy: 6,
+      emotions: 6,
+      objects: 6,
+    },
+  });
+
   const userContextProviderValue = useMemo(
     () => ({
-      currAge: 6,
-      currCompetencies: {
-        numeracy: 0.5,
-        literacy: 0.5,
-        emotions: 0.5,
-        objects: 0.5,
-      },
-      currPriorities: {
-        numeracy: 0.5,
-        literacy: 0.5,
-        emotions: 0.5,
-        objects: 0.5,
-      },
-      currTargetAges: {
-        numeracy: 6,
-        literacy: 6,
-        emotions: 6,
-        objects: 6,
-      },
+      user: user,
+      setUser: setUser,
+      competency: competency,
+      setCompetency: setCompetency,
     }),
-    []
+    [user, setUser]
   );
 
   return (

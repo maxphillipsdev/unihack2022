@@ -11,28 +11,28 @@ export interface Category {
 }
 
 interface Props {
-  category: any;
+  category: Category;
 }
 
 export const Rail: React.FC<Props> = ({ category }) => {
   const [lessons, setLessons] = React.useState([]);
 
-  React.useEffect(() => {
-    const fetchLessons = async () => {
-      setLessons([]);
-      const id = category._id;
-      const lessons = await client.fetch(
-        `
-        *[_type == "lesson" && categories == $id in categories[]->_ref]
-      `,
-        {
-          id,
-        }
-      );
-      setLessons(lessons);
-    };
-    fetchLessons();
-  }, []);
+  // React.useEffect(() => {
+  //   const fetchLessons = async () => {
+  //     setLessons([]);
+  //     const id = category._id;
+  //     const lessons = await client.fetch(
+  //       `
+  //       *[_type == "lesson" && categories == $id in categories[]->_ref]
+  //     `,
+  //       {
+  //         id,
+  //       }
+  //     );
+  //     setLessons(lessons);
+  //   };
+  //   fetchLessons();
+  // }, []);
 
   return (
     <Box>
@@ -45,15 +45,15 @@ export const Rail: React.FC<Props> = ({ category }) => {
           fontFamily: "AtlassianText",
         }}
       >
-        {category.title}
+        {category.name}
       </Heading>
       <p style={{ margin: 10, fontSize: "120%" }}>
         <span>
-          Explore Learnery's curated lessons on{" "}
-          <strong>{category.title}</strong>!
+          Explore Learnery's curated lessons on <strong>{category.name}</strong>
+          !
         </span>
       </p>
-      <Box overflowX="scroll" whiteSpace="nowrap" paddingLeft="5px">
+      {/* <Box overflowX="scroll" whiteSpace="nowrap" paddingLeft="5px">
         {lessons.length > 0 ? (
           lessons.map((lesson: any) => (
             <LessonCard lesson={lesson} key={lesson.slug} />
@@ -61,6 +61,13 @@ export const Rail: React.FC<Props> = ({ category }) => {
         ) : (
           <Text>Loading...</Text>
         )}
+      </Box> */}
+      <Box overflowX="scroll" whiteSpace="nowrap" paddingLeft="5px">
+        <HStack>
+          {category.lessons.map((lesson: any) => (
+            <LessonCard lesson={lesson} key={lesson.slug} />
+          ))}
+        </HStack>
       </Box>
     </Box>
   );
