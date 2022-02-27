@@ -6,7 +6,7 @@ type GetRecommendation = (
   lessonTargetAge: number,
   currCompetency: number,
   currAge: number
-) => Promise<[number, number]>;
+) => Promise<[number, number, number]>;
 
 const getRecommendation: GetRecommendation = async (
   lessonScore,
@@ -17,7 +17,7 @@ const getRecommendation: GetRecommendation = async (
   const res = axios.get(
     `http://localhost:3000/recommendation?lesson_score=${lessonScore}&lesson_target_age=${lessonTargetAge}&curr_competency=${currCompetency}&curr_age=${currAge}`
   );
-  const deltas: [number, number] = (await res).data;
+  const deltas: [number, number, number] = (await res).data;
   return deltas;
 };
 

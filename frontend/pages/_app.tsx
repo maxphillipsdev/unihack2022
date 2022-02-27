@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import { extendTheme } from "@chakra-ui/react";
+import { createContext, useMemo } from "react";
 
 const colors = {
   brand: {
@@ -14,12 +15,61 @@ const colors = {
 };
 const theme = extendTheme({ colors });
 
+export const UserContext = createContext({
+  currAge: 6,
+  currCompetencies: {
+    numeracy: 0.5,
+    literacy: 0.5,
+    emotions: 0.5,
+    objects: 0.5,
+  },
+  currPriorities: {
+    numeracy: 0.5,
+    literacy: 0.5,
+    emotions: 0.5,
+    objects: 0.5,
+  },
+  currTargetAges: {
+    numeracy: 6,
+    literacy: 6,
+    emotions: 6,
+    objects: 6,
+  },
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
+  const userContextProviderValue = useMemo(
+    () => ({
+      currAge: 6,
+      currCompetencies: {
+        numeracy: 0.5,
+        literacy: 0.5,
+        emotions: 0.5,
+        objects: 0.5,
+      },
+      currPriorities: {
+        numeracy: 0.5,
+        literacy: 0.5,
+        emotions: 0.5,
+        objects: 0.5,
+      },
+      currTargetAges: {
+        numeracy: 6,
+        literacy: 6,
+        emotions: 6,
+        objects: 6,
+      },
+    }),
+    []
+  );
+
   return (
     <ChakraProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <UserContext.Provider value={userContextProviderValue}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </UserContext.Provider>
     </ChakraProvider>
   );
 }

@@ -12,7 +12,7 @@ const Layout: FC = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TopNavBar />
-      <div style={{ height: "64px" }} />
+      <div style={{ height: "80px" }} />
       {children}
     </div>
   );
