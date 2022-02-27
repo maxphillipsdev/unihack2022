@@ -35,7 +35,6 @@ function HeaderSection() {
           columns={{ base: 1, lg: 2, xl: 3 }}
           spacing={4}
           mx="auto"
-          mx="auto"
           py={{ base: 12, lg: 16 }}
           px={{ base: 4, lg: 8 }}
           display={{ lg: "flex" }}

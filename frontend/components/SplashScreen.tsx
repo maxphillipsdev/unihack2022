@@ -83,6 +83,7 @@ const SplashScreen = ({ brand = "Learnery" }) => {
         ></motion.img>
         {brand.split("").map((character, i) => (
           <motion.span
+          key={i}
             animate={{
               opacity: 0,
             }}

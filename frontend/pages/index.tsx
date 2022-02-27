@@ -270,7 +270,7 @@ const Home: NextPage = ({
               textAlign: "center",
             }}
           >
-            Today's Recommended Curriculum
+            Today{"'"}s Recommended Curriculum
           </Heading>
           <p
             style={{
@@ -279,8 +279,8 @@ const Home: NextPage = ({
               textAlign: "center",
             }}
           >
-            Here's what <strong>Learnery</strong> suggests Max Phillips to do
-            next!
+            Here{"'"}s what <strong>Learnery</strong> suggests Max Phillips to
+            do next!
           </p>
           <HStack>
             {recommendedLessons
@@ -291,6 +291,7 @@ const Home: NextPage = ({
               )
               .map((lesson, i) => (
                 <LessonCard
+                  key={i}
                   lesson={lesson}
                   isRecommended
                   lessons={recommendedLessons}
@@ -330,8 +331,9 @@ const Home: NextPage = ({
         >
           Curated Lessons
         </Heading>
-        {lessonData.map((category: any) => (
+        {lessonData.map((category: any,i) => (
           <motion.div
+            key={i}
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}

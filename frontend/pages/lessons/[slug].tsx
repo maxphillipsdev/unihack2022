@@ -85,10 +85,12 @@ const Lesson = ({
               res.data.priority_delta,
           },
         });
-        setShowAnswers(true);
         // router.push("/");
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setShowAnswers(true);
+      });
   };
   return (
     <Flex
@@ -109,8 +111,8 @@ const Lesson = ({
           <Text style={{ padding: 48, fontSize: "150%" }}>
             Ancient Rome was a powerful and important civilization that ruled
             much of Europe for nearly 1000 years. The culture of Ancient Rome
-            was spread throughout Europe during its rule. As a result, Rome's
-            culture still has an impact in the Western world today. The basis
+            was spread throughout Europe during its rule. As a result, Rome{"'"}
+            s culture still has an impact in the Western world today. The basis
             for much of Western culture comes from Ancient Rome, especially in
             areas such as government, engineering, architecture, language, and
             literature.
@@ -122,7 +124,7 @@ const Lesson = ({
               fontSize: "150%",
             }}
           >
-            Rome first grew into power as a Republic. This meant that Rome's
+            Rome first grew into power as a Republic. This meant that Rome{"'"}s
             leaders, such as senators, were elected officials that served for a
             limited amount of time, not kings who were born into leadership and
             ruled for life. They had a complex government with written laws, a
@@ -137,9 +139,9 @@ const Lesson = ({
             src="https://www.youtube.com/embed/tClxdOsC_JY"
             title="YouTube video player"
             style={{ padding: 48 }}
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </Box>
         <Box w="50%" h="100%">
