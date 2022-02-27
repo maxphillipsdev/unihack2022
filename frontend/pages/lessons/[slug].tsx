@@ -110,13 +110,13 @@ const Lesson = ({
           >
             <HStack>
               <Button size="lg" variant="ghost" onClick={() => setMode(0)}>
-                <AiFillRead />
+                <AiFillRead style={{ fontSize: "200%" }} />
               </Button>
               <Button size="lg" variant="ghost" onClick={() => setMode(1)}>
-                <BsEye />
+                <BsEye style={{ fontSize: "200%" }} />
               </Button>
               <Button size="lg" variant="ghost" onClick={() => setMode(2)}>
-                <MdHearing />
+                <MdHearing style={{ fontSize: "200%" }} />
               </Button>
             </HStack>
           </Box>
