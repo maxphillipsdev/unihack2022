@@ -28,6 +28,7 @@ import {
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { AiFillDashboard } from "react-icons/ai";
 import Link from "next/link";
+import { ImStatsBars } from "react-icons/im";
 
 export default function Navbar() {
   const bg = useColorModeValue("white", "gray.800");
@@ -121,6 +122,11 @@ export default function Navbar() {
               Welcome Max
             </Box> */}
             {/* <FcGraduationCap size={24} /> */}
+            <Link href="/student-profile">
+              <Button variant="ghost">
+                <ImStatsBars style={{ cursor: "pointer", fontSize: "200%" }} />
+              </Button>
+            </Link>
             <Link href="/student-profile">
               <Avatar
                 style={{ cursor: "pointer", border: "3px solid #48cae4" }}

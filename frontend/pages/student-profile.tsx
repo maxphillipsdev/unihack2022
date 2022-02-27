@@ -11,9 +11,15 @@ const Profile = () => {
     <>
       <br />
       <Grid templateColumns="repeat(2, 1fr)" gap={6} sx={{ mx: "6" }}>
-        <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
+        <GridItem
+          w="100%"
+          h="43vh"
+          bg="#1d3557"
+          boxShadow="md"
+          sx={{ borderRadius: "5px" }}
+        >
           <Box
-            bg="white"
+            bg="#FFFFFF"
             rounded="sm"
             w="100%"
             height="93%"
@@ -22,11 +28,15 @@ const Profile = () => {
           >
             <StudentHistory />
           </Box>
-          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
+          <Text
+            fontSize="xl"
+            textAlign="center"
+            style={{ marginTop: "8px", color: "white" }}
+          >
             Lesson History
           </Text>
         </GridItem>
-        <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
+        <GridItem w="100%" h="43vh" bg="#1d3557" boxShadow="md">
           <Box
             bg="white"
             rounded="sm"
@@ -37,11 +47,15 @@ const Profile = () => {
           >
             <StudentRadialBar />
           </Box>
-          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
-            Statistics Visualization #1
+          <Text
+            textAlign="center"
+            fontSize="xl"
+            style={{ marginTop: "8px", color: "white" }}
+          >
+            Categorical Competencies
           </Text>
         </GridItem>
-        <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
+        <GridItem w="100%" h="43vh" bg="#1d3557" boxShadow="md">
           <Box
             bg="white"
             rounded="sm"
@@ -52,11 +66,15 @@ const Profile = () => {
           >
             <SubjectCompentencyChart />
           </Box>
-          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
-            Statistics Visualization #2
+          <Text
+            textAlign="center"
+            fontSize="xl"
+            style={{ marginTop: "8px", color: "white" }}
+          >
+            Relative Competencies
           </Text>
         </GridItem>
-        <GridItem w="100%" h="43vh" bg="gray.200" boxShadow="md">
+        <GridItem w="100%" h="43vh" bg="#1d3557" boxShadow="md">
           <Box
             bg="white"
             rounded="sm"
@@ -68,8 +86,12 @@ const Profile = () => {
             {/* <RandomChart /> */}
             <StudentParameters />
           </Box>
-          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
-            Statistics Visualization #3
+          <Text
+            textAlign="center"
+            fontSize="xl"
+            style={{ marginTop: "8px", color: "white" }}
+          >
+            Recommendation Engine Competencies
           </Text>
         </GridItem>
       </Grid>
