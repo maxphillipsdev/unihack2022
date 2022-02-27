@@ -1,8 +1,12 @@
-<<<<<<< HEAD
-import { Box, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/react";
-=======
-import { Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
->>>>>>> f1ef6a2a23d1c62a0a26971198092f35aacbf289
+import {
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  Text,
+  VStack,
+  Button,
+} from "@chakra-ui/react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 import client from "../../lib/client";
@@ -55,7 +59,6 @@ const Lesson = ({
       i++;
       return newVal;
     }, 0);
-<<<<<<< HEAD
     const score = correct / MCQs.length;
 
     // Adjusting rec
@@ -85,10 +88,6 @@ const Lesson = ({
         router.push("/");
       })
       .catch(console.log);
-=======
-    alert(correct / MCQs.length);
-    setShowAnswers(true);
->>>>>>> f1ef6a2a23d1c62a0a26971198092f35aacbf289
   };
   return (
     <Flex
@@ -169,7 +168,7 @@ const Lesson = ({
                 showAnswers
                   ? () => {
                       // try again
-                      router.push("/")
+                      router.push("/");
                     }
                   : onSubmit
               }

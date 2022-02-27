@@ -70,7 +70,7 @@ const StudentParameters: React.FC<Props> = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        {Object.keys(userContext.currCompetencies).map((parameterName) => (
+        {Object.keys(userContext.user.currCompetencies).map((parameterName) => (
           <HStack
             key={capitalizeFirstLetter(parameterName)}
             style={{ position: "relative", marginTop: "24px" }}
@@ -90,7 +90,9 @@ const StudentParameters: React.FC<Props> = () => {
                 aria-label="slider-ex-4"
                 min={0}
                 max={1}
-                value={userContext.currCompetencies[parameterName] as number}
+                value={
+                  userContext.user.currCompetencies[parameterName] as number
+                }
                 isDisabled
               >
                 <SliderTrack bg="red.100">
@@ -120,7 +122,7 @@ const StudentParameters: React.FC<Props> = () => {
         ))}
         <br />
         <hr />
-        {Object.keys(userContext.currCompetencies).map((parameterName) => (
+        {Object.keys(userContext.user.currCompetencies).map((parameterName) => (
           <HStack
             key={capitalizeFirstLetter(parameterName)}
             style={{ position: "relative", marginTop: "24px" }}
@@ -140,7 +142,7 @@ const StudentParameters: React.FC<Props> = () => {
                 aria-label="slider-ex-4"
                 min={0}
                 max={20}
-                value={userContext.currTargetAges[parameterName]}
+                value={userContext.user.currTargetAges[parameterName]}
                 isDisabled
               >
                 <SliderTrack bg="red.100">
