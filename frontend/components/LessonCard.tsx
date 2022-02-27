@@ -13,11 +13,15 @@ export interface Lesson {
 interface Props {
   lesson: Lesson;
   isRecommended?: boolean;
+  lessons: any;
+  setLessons: any;
 }
 
 export const LessonCard: React.FC<Props> = ({
   lesson,
   isRecommended = false,
+  lessons,
+  setLessons,
 }) => {
   return (
     <div className="container">
@@ -29,7 +33,7 @@ export const LessonCard: React.FC<Props> = ({
           <HStack>
             {isRecommended && (
               <span style={{ fontSize: "115%" }} className="tag recommended">
-                Recommended!
+                Recommended
               </span>
             )}
             <span style={{ fontSize: "115%" }} className="tag tag-teal">
@@ -59,7 +63,8 @@ export const LessonCard: React.FC<Props> = ({
           </div>
           <br />
           <Box sx={{ textAlign: "center", width: "100%" }}>
-            <Link href={`/lessons/${lesson.slug}`}>
+            {/* <Link href={`/lessons/${lesson.slug}`}> */}
+            <Link href={`/lessons/test`}>
               <Button>Start Lesson</Button>
             </Link>
           </Box>

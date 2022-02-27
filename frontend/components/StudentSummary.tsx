@@ -52,7 +52,7 @@ export const StudentSummary: React.FC<Props> = ({ name, image, goals }) => {
         background="white"
         boxShadow="0px 5px 10px 0px hsl(0deg 0% 0% / 20%)"
         borderRadius="15px"
-        padding="15px"
+        padding="20px"
         textAlign="center"
       >
         <Text fontSize="30px">
@@ -62,12 +62,12 @@ export const StudentSummary: React.FC<Props> = ({ name, image, goals }) => {
         <Goal
           name="Weekly"
           progress={goals.weekly}
-          color="hsl(215, 60%, 42%)"
+          color="hsl(190, 60%, 42%)"
         />
         <Goal
           name="Monthly"
           progress={goals.monthly}
-          color="hsl(215, 60%, 27%)"
+          color="hsl(165, 60%, 27%)"
         />
       </Box>
     </Flex>

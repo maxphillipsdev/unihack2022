@@ -111,7 +111,9 @@ const Home: NextPage = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   console.log(lessons, categories);
   // ===== Recommended lessons ======
-
+  // TODO: remove reading I when start lesson clicked
+  // COMPLETE READING 1
+  // OUTPUT: READING II AND MATHS I
   const [recommendedLessons, setRecommendedLessons] = useState([
     {
       title: "Reading I",
@@ -121,12 +123,20 @@ const Home: NextPage = ({
       priority: 0.5,
     },
     {
+      title: "Maths I",
+      slug: "how-to-tie-ur-shoes",
+      image:
+        "https://media.istockphoto.com/photos/heap-of-wooden-numbers-on-blue-background-picture-id1292684021?b=1&k=20&m=1292684021&s=170667a&w=0&h=5-7WcFt5ibtORzehe4YnPSTZIgUiayWQ3ICRrOibazk=",
+      targetAge: 6,
+      priority: 0.49,
+    },
+    {
       title: "Reading II",
       slug: "how-to-tie-ur-shoes",
       image:
         "https://img-cdn.inc.com/image/upload/w_1920,h_1080,c_fill/images/panoramic/GettyImages-1301650294_463234_ofai7p.jpg",
       targetAge: 6,
-      priority: 0.5,
+      priority: 0.48,
     },
   ]);
 
@@ -207,7 +217,12 @@ const Home: NextPage = ({
           </p>
           <HStack>
             {recommendedLessons.map((lesson, i) => (
-              <LessonCard lesson={lesson} isRecommended />
+              <LessonCard
+                lesson={lesson}
+                isRecommended
+                lessons={recommendedLessons}
+                setLessons={setRecommendedLessons}
+              />
             ))}
           </HStack>
         </motion.div>
