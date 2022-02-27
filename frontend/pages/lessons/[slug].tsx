@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Box, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/react";
+=======
+import { Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+>>>>>>> f1ef6a2a23d1c62a0a26971198092f35aacbf289
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 import client from "../../lib/client";
@@ -11,19 +15,21 @@ import axios from "axios";
 
 const MCQs = [
   {
-    question: "How do you tie your shoes?",
-    options: ["1", "2", "3", "4"],
-    answer: "2",
+    question: "How long did ancient Rome rule Europe for?",
+    options: ["100 year", "500 years", "1000 years"],
+    answer: "1000 years",
   },
   {
-    question: "How do you tie your shoes?",
-    options: ["1", "2", "3", "4"],
-    answer: "3",
+    question:
+      "For what period of time did Ancient Rome be ruled by the Republic?",
+    options: ["2BC - 1BC", "509BC - 45BC", "60BC - 45BC"],
+    answer: "509BC - 45BC",
   },
   {
-    question: "How do you tie your shoes?",
-    options: ["1", "2", "3", "4"],
-    answer: "4",
+    question:
+      "According to the lesson, what areas did Ancient Rome effect for future civilization",
+    options: ["Government", "Painting", "Cooking"],
+    answer: "Government",
   },
 ];
 
@@ -31,6 +37,7 @@ const Lesson = ({
   lesson,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [answers, setAnswers] = useState(["", "", ""]);
+  const [showAnswers, setShowAnswers] = useState(false);
   console.log(lesson);
   const userContext = useContext(UserContext);
   const router = useRouter();
@@ -48,6 +55,7 @@ const Lesson = ({
       i++;
       return newVal;
     }, 0);
+<<<<<<< HEAD
     const score = correct / MCQs.length;
 
     // Adjusting rec
@@ -77,6 +85,10 @@ const Lesson = ({
         router.push("/");
       })
       .catch(console.log);
+=======
+    alert(correct / MCQs.length);
+    setShowAnswers(true);
+>>>>>>> f1ef6a2a23d1c62a0a26971198092f35aacbf289
   };
   return (
     <Flex
@@ -135,6 +147,8 @@ const Lesson = ({
             {MCQs.map((mcq, idx) => {
               return (
                 <MCQ
+                  correctAnswer={MCQs[idx].answer}
+                  showCorrectAnswer={showAnswers}
                   key={idx}
                   question={mcq.question}
                   options={mcq.options}
@@ -148,7 +162,21 @@ const Lesson = ({
                 />
               );
             })}
-            <button onClick={onSubmit}>SUbmit</button>
+            <Button
+              size="lg"
+              padding="2"
+              onClick={
+                showAnswers
+                  ? () => {
+                      // try again
+                      router.push("/")
+                    }
+                  : onSubmit
+              }
+              colorScheme="blue"
+            >
+              {showAnswers ? "Return" : "Submit"}
+            </Button>
             {/* {lesson.content.map((section: any) => {
               if (section._type === "mcqSection") {
                 return (
