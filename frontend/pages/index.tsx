@@ -77,8 +77,8 @@ const lessonData = [
         targetAge: 10,
       },
       {
-        title: "Archeology",
-        slug: "archeology-1",
+        title: "Archaeology",
+        slug: "archaeology-1",
         image:
           "https://static.theprint.in/wp-content/uploads/2022/01/terracotta-164169_1280.jpeg?compress=true&quality=80&w=376&dpr=2.6",
         targetAge: 12,
@@ -216,7 +216,7 @@ const Home: NextPage = ({
 
   return (
     <Flex as="main" flexDir="column" width="100%" height="100vh">
-      {/* <SplashScreen /> */}
+      <SplashScreen />
       <Box
         as="section"
         id="student-profile"
