@@ -1,4 +1,4 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, HStack, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 
@@ -18,7 +18,7 @@ export const LessonCard: React.FC<Props> = ({ lesson }) => {
     <Link href={`/lesson/${lesson.slug}`}>
       <Box
         style={{
-          width: "250px",
+          width: "480px",
           background: "white",
           borderRadius: "4px",
           cursor: "pointer",
@@ -30,11 +30,15 @@ export const LessonCard: React.FC<Props> = ({ lesson }) => {
           display: "inline-block",
         }}
       >
-        <Image src={lesson.image} />
-        <Box padding="10px">
-          <Box>{lesson.title}</Box>
-          <Box opacity="60%">Target age: {lesson.targetAge}</Box>
-        </Box>
+        <HStack>
+          <Image src={lesson.image} style={{ maxWidth: "50%" }} />
+          <Box padding="16px">
+            <Box>{lesson.title}</Box>
+            <Box opacity="60%" style={{}}>
+              Target age: {lesson.targetAge}
+            </Box>
+          </Box>
+        </HStack>
       </Box>
     </Link>
   );

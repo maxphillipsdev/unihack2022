@@ -123,8 +123,8 @@ export default function Navbar() {
             {/* <FcGraduationCap size={24} /> */}
             <Link href="/student-profile">
               <Avatar
-                style={{ cursor: "pointer" }}
-                size="sm"
+                style={{ cursor: "pointer", border: "3px solid #48cae4" }}
+                size="md"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoi5pz196m8gkB1QJO27yu1mz8WC-Qa0E3fsU2_VVTvj3LerDF42NNzXdM76RFs2sfDEY&usqp=CAU"
               />
             </Link>
