@@ -16,6 +16,10 @@ import { useContext, useState } from "react";
 import getRecommendation from "../../util/recommendation";
 import { UserContext } from "../_app";
 import axios from "axios";
+import { BsEye } from "react-icons/bs";
+import { MdHearing } from "react-icons/md";
+import { AiFillRead } from "react-icons/ai";
+import { HiOutlinePlay } from "react-icons/hi";
 
 const MCQs = [
   {
@@ -45,6 +49,7 @@ const Lesson = ({
   console.log(lesson);
   const userContext = useContext(UserContext);
   const router = useRouter();
+  const [mode, setMode] = useState(0);
 
   // Answers
   const onSubmit = () => {
@@ -99,51 +104,85 @@ const Lesson = ({
       style={{ height: "calc(100vh - 64px)" }}
     >
       <HStack h="100%">
-        <Box w="50%" h="100%" bg="white">
-          <Heading
-            style={{ paddingLeft: 48, paddingRight: 48, paddingTop: 48 }}
-            size="xl"
+        <Box w="50%" h="100%" bg="white" sx={{ position: "relative" }}>
+          <Box
+            sx={{ position: "absolute", fontSize: "200%", top: 16, right: 16 }}
           >
-            Reading: Ancient Rome
-          </Heading>
-          <Text style={{ padding: 48, fontSize: "150%" }}>
-            Ancient Rome was a powerful and important civilization that ruled
-            much of Europe for nearly 1000 years. The culture of Ancient Rome
-            was spread throughout Europe during its rule. As a result, Rome's
-            culture still has an impact in the Western world today. The basis
-            for much of Western culture comes from Ancient Rome, especially in
-            areas such as government, engineering, architecture, language, and
-            literature.
-          </Text>
-          <Text
-            style={{
-              paddingLeft: 48,
-              paddingRight: 48,
-              fontSize: "150%",
-            }}
-          >
-            Rome first grew into power as a Republic. This meant that Rome's
-            leaders, such as senators, were elected officials that served for a
-            limited amount of time, not kings who were born into leadership and
-            ruled for life. They had a complex government with written laws, a
-            constitution, and a balance of powers. These concepts became very
-            important in forming future democratic governments, like the United
-            States. The Republic would rule Rome for hundreds of years from
-            around 509 BC to 45 BC.
-          </Text>
-          <iframe
-            width="100%"
-            height="500"
-            src="https://www.youtube.com/embed/tClxdOsC_JY"
-            title="YouTube video player"
-            style={{ padding: 48 }}
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+            <HStack>
+              <Button size="lg" variant="ghost" onClick={() => setMode(0)}>
+                <AiFillRead />
+              </Button>
+              <Button size="lg" variant="ghost" onClick={() => setMode(1)}>
+                <BsEye />
+              </Button>
+              <Button size="lg" variant="ghost" onClick={() => setMode(2)}>
+                <MdHearing />
+              </Button>
+            </HStack>
+          </Box>
+          {mode === 0 && (
+            <Box>
+              <Heading
+                style={{ paddingLeft: 48, paddingRight: 48, paddingTop: 48 }}
+                size="xl"
+              >
+                Reading: Ancient Rome
+              </Heading>
+              <Text style={{ padding: 48, fontSize: "150%" }}>
+                Ancient Rome was a powerful and important civilization that
+                ruled much of Europe for nearly 1000 years. The culture of
+                Ancient Rome was spread throughout Europe during its rule. As a
+                result, Rome's culture still has an impact in the Western world
+                today. The basis for much of Western culture comes from Ancient
+                Rome, especially in areas such as government, engineering,
+                architecture, language, and literature.
+              </Text>
+              <Text
+                style={{
+                  paddingLeft: 48,
+                  paddingRight: 48,
+                  fontSize: "150%",
+                }}
+              >
+                Rome first grew into power as a Republic. This meant that Rome's
+                leaders, such as senators, were elected officials that served
+                for a limited amount of time, not kings who were born into
+                leadership and ruled for life. They had a complex government
+                with written laws, a constitution, and a balance of powers.
+                These concepts became very important in forming future
+                democratic governments, like the United States. The Republic
+                would rule Rome for hundreds of years from around 509 BC to 45
+                BC.
+              </Text>
+            </Box>
+          )}
+          {mode === 1 && (
+            <Box sx={{ padding: 40 }}>
+              <iframe
+                width="100%"
+                height="500"
+                src="https://www.youtube.com/embed/tClxdOsC_JY"
+                title="YouTube video player"
+                style={{ padding: 48 }}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </Box>
+          )}
+          {mode === 2 && (
+            <HiOutlinePlay
+              style={{
+                fontSize: "300%",
+                position: "absolute",
+                top: "20%",
+                left: "49%",
+              }}
+            />
+          )}
         </Box>
         <Box w="50%" h="100%">
-          <VStack h="100%">
+          <VStack style={{ paddingTop: 60 }} h="100%">
             {MCQs.map((mcq, idx) => {
               return (
                 <MCQ
