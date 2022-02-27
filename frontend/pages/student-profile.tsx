@@ -22,7 +22,7 @@ const Profile = () => {
           >
             <StudentHistory />
           </Box>
-          <Text fontSize="lg" textAlign="center">
+          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
             Lesson History
           </Text>
         </GridItem>
@@ -37,7 +37,7 @@ const Profile = () => {
           >
             <StudentRadialBar />
           </Box>
-          <Text fontSize="lg" textAlign="center">
+          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
             Statistics Visualization #1
           </Text>
         </GridItem>
@@ -52,7 +52,7 @@ const Profile = () => {
           >
             <SubjectCompentencyChart />
           </Box>
-          <Text fontSize="lg" textAlign="center">
+          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
             Statistics Visualization #2
           </Text>
         </GridItem>
@@ -68,7 +68,7 @@ const Profile = () => {
             {/* <RandomChart /> */}
             <StudentParameters />
           </Box>
-          <Text fontSize="lg" textAlign="center">
+          <Text fontSize="lg" textAlign="center" style={{ marginTop: "12px" }}>
             Statistics Visualization #3
           </Text>
         </GridItem>

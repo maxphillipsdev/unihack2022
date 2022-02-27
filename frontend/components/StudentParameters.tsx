@@ -51,32 +51,65 @@ const parameters: Parameter[] = [
 
 const StudentParameters: React.FC<Props> = () => {
   return (
-    <Box>
-      {parameters.map((parameter) => (
-        <HStack key={parameter.name}>
-          <p
-            style={{ marginRight: "10px", textAlign: "right", width: "250px" }}
+    <Box style={{ position: "relative", height: "100%", width: "100%" }}>
+      <Box
+        style={{
+          color: "black",
+          fontSize: "120%",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        {parameters.map((parameter) => (
+          <HStack
+            key={parameter.name}
+            style={{ position: "relative", marginTop: "24px" }}
           >
-            {parameter.name}{" "}
-          </p>
-          <Box style={{ width: "250px" }}>
-            <Slider
-              aria-label="slider-ex-4"
-              min={0}
-              max={1}
-              value={parameter.value}
-              isDisabled
+            <p
+              style={{
+                marginRight: "10px",
+                textAlign: "right",
+                width: "250px",
+              }}
             >
-              <SliderTrack bg="red.100">
-                <SliderFilledTrack bg="blueviolet" />
-              </SliderTrack>
-              <SliderThumb boxSize={6}>
-                <Box color="blue" />
-              </SliderThumb>
-            </Slider>
-          </Box>
-        </HStack>
-      ))}
+              {parameter.name}:
+            </p>
+            <Box style={{ width: "350px" }}>
+              <Slider
+                aria-label="slider-ex-4"
+                min={0}
+                max={1}
+                value={parameter.value}
+                isDisabled
+              >
+                <SliderTrack bg="red.100">
+                  <SliderFilledTrack bg="blueviolet" />
+                </SliderTrack>
+                <SliderThumb boxSize={6}>
+                  <Box color="blue" />
+                </SliderThumb>
+                <SliderMark value={0} mt="2" ml="-2.5" fontSize="sm">
+                  0.0
+                </SliderMark>
+                <SliderMark value={0.25} mt="2" ml="-2.5" fontSize="sm">
+                  0.25
+                </SliderMark>
+                <SliderMark value={0.5} mt="2" ml="-2.5" fontSize="sm">
+                  0.5
+                </SliderMark>
+                <SliderMark value={0.75} mt="2" ml="-2.5" fontSize="sm">
+                  0.75
+                </SliderMark>
+                <SliderMark value={1} mt="2" ml="-2.5" fontSize="sm">
+                  1.0
+                </SliderMark>
+              </Slider>
+            </Box>
+          </HStack>
+        ))}
+      </Box>
     </Box>
   );
 };
