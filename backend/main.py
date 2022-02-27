@@ -2,6 +2,8 @@ from typing import Optional
 
 from fastapi import FastAPI
 
+from fastapi.middleware.cors import CORSMiddleware
+
 import numpy as np
 
 import torch
@@ -14,6 +16,15 @@ model = torch.load(PATH)
 
 model.eval()                                              # Turns off autograd
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def predict(lesson_score: float, lesson_target_age: float, curr_competency: float, curr_age: float) -> {}:
     # TODO replace with input
