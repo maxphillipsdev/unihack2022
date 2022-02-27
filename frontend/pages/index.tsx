@@ -25,8 +25,9 @@ import SplashScreen from "../components/SplashScreen";
 import StudentParameters from "../components/StudentParameters";
 import client from "../lib/client";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import wallpaper from "../assets/img/education-wallpaper.png";
+import { UserContext } from "./_app";
 
 const insideStyles = {
   background: "white",
@@ -59,46 +60,79 @@ const lessonData = [
   //   ],
   // },
   {
-    name: "Mathematics",
+    name: "History",
     lessons: [
       {
-        title: "Title here",
-        slug: "slug-here",
+        title: "Ancient History 1",
+        slug: "ancient-history-1",
         image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 6,
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Parthenon_%2830276156187%29.jpg/1200px-Parthenon_%2830276156187%29.jpg",
+        targetAge: 10,
       },
       {
-        title: "Title here",
-        slug: "slug-here",
+        title: "Modern History 1",
+        slug: "modern-history-1",
         image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 8,
+          "http://upload.wikimedia.org/wikipedia/commons/thumb/4/40/ANTIAKW.jpg/800px-ANTIAKW.jpg",
+        targetAge: 10,
       },
       {
-        title: "Title here",
-        slug: "slug-here",
+        title: "Archeology",
+        slug: "archeology-1",
         image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
-        targetAge: 5,
+          "https://static.theprint.in/wp-content/uploads/2022/01/terracotta-164169_1280.jpeg?compress=true&quality=80&w=376&dpr=2.6",
+        targetAge: 12,
       },
     ],
   },
   {
-    name: "Physics",
+    name: "Maths",
     lessons: [
       {
-        title: "Title here",
+        title: "Arithmetic 1",
+        slug: "arithmetic-1",
+        image:
+          "https://cdn.vanderbilt.edu/vu-news/files/20190417230900/math-blackboard.jpg",
+        targetAge: 6,
+      },
+      {
+        title: "Probability 1",
+        slug: "probability-1",
+        image:
+          "https://www.thesprucecrafts.com/thmb/284T1TCXUV7cBrItDN0i55ZqB3U=/1500x844/smart/filters:no_upscale()/dice-probabilities-rolling-2-sixsided-dice-411406_hero_3220-4c2f1909efb84327bd236c34e7610364.jpg",
+        targetAge: 10,
+      },
+      {
+        title: "Trigonometry 1",
+        slug: "trigonometry-1",
+        image:
+          "https://e.staedtlercdn.com/fileadmin/_processed_/4/4/csm_UK_STAEDTLER-Rulers-and-set-squares_d12d377fb9.jpg",
+        targetAge: 12,
+      },
+    ],
+  },
+  {
+    name: "English",
+    lessons: [
+      {
+        title: "Spelling 1",
+        slug: "spelling-1",
+        image:
+          "https://compote.slate.com/images/9c753ed5-6ecf-4085-894f-6af84877ccb6.jpg",
+        targetAge: 6,
+      },
+      {
+        title: "Grammar 1",
         slug: "slug-here",
         image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+          "https://media.smallbiztrends.com/2021/08/common-grammar-mistakes.png",
         targetAge: 8,
       },
       {
-        title: "Title here",
+        title: "Creative Writing 1",
         slug: "slug-here",
         image:
-          "https://scse.d.umn.edu/sites/scse.d.umn.edu/files/umd_dept_home/physics-chalkboard_cropped.jpg",
+          "https://images.ctfassets.net/3s5io6mnxfqz/4yeXIDuHZer33N4bJndXGs/4a2b095aaa90860fc2f53d0e7765116c/AdobeStock_86801082.jpeg?fm=jpg&w=900&fl=progressive",
         targetAge: 8,
       },
     ],
@@ -109,7 +143,9 @@ const Home: NextPage = ({
   lessons,
   categories,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const userContext = useContext(UserContext);
   console.log(lessons, categories);
+
   // ===== Recommended lessons ======
   // TODO: remove reading I when start lesson clicked
   // COMPLETE READING 1
@@ -120,7 +156,7 @@ const Home: NextPage = ({
       slug: "how-to-tie-ur-shoes",
       image: "https://desktime.com/blog/wp-content/uploads/2015/09/reading.png",
       targetAge: 5,
-      priority: 0.5,
+      priority: userContext.user.currPriorities.literacy,
     },
     {
       title: "Maths I",
@@ -128,7 +164,7 @@ const Home: NextPage = ({
       image:
         "https://media.istockphoto.com/photos/heap-of-wooden-numbers-on-blue-background-picture-id1292684021?b=1&k=20&m=1292684021&s=170667a&w=0&h=5-7WcFt5ibtORzehe4YnPSTZIgUiayWQ3ICRrOibazk=",
       targetAge: 6,
-      priority: 0.49,
+      priority: userContext.user.currPriorities.numeracy,
     },
     {
       title: "Reading II",
@@ -136,15 +172,46 @@ const Home: NextPage = ({
       image:
         "https://img-cdn.inc.com/image/upload/w_1920,h_1080,c_fill/images/panoramic/GettyImages-1301650294_463234_ofai7p.jpg",
       targetAge: 6,
-      priority: 0.48,
+      priority: userContext.user.currPriorities.literacy,
     },
   ]);
 
   useEffect(() => {
-    recommendedLessons.sort((a, b) => b.priority - a.priority);
-    setRecommendedLessons([...recommendedLessons]);
-  }, []);
+    setRecommendedLessons(
+      recommendedLessons.sort((a, b) => b.priority - a.priority)
+    );
+  }, [userContext]);
 
+  useEffect(() => {
+    setRecommendedLessons([
+      {
+        title: "Reading I",
+        slug: "how-to-tie-ur-shoes",
+        image:
+          "https://desktime.com/blog/wp-content/uploads/2015/09/reading.png",
+        targetAge: 5,
+        priority: userContext.user.currPriorities.literacy,
+      },
+      {
+        title: "Maths I",
+        slug: "how-to-tie-ur-shoes",
+        image:
+          "https://media.istockphoto.com/photos/heap-of-wooden-numbers-on-blue-background-picture-id1292684021?b=1&k=20&m=1292684021&s=170667a&w=0&h=5-7WcFt5ibtORzehe4YnPSTZIgUiayWQ3ICRrOibazk=",
+        targetAge: 6,
+        priority: userContext.user.currPriorities.numeracy,
+      },
+      {
+        title: "Reading II",
+        slug: "how-to-tie-ur-shoes",
+        image:
+          "https://img-cdn.inc.com/image/upload/w_1920,h_1080,c_fill/images/panoramic/GettyImages-1301650294_463234_ofai7p.jpg",
+        targetAge: 6,
+        priority: userContext.user.currPriorities.literacy,
+      },
+    ]);
+  }, [userContext]);
+
+  console.log(recommendedLessons);
   // ================================
 
   return (
@@ -216,14 +283,21 @@ const Home: NextPage = ({
             next!
           </p>
           <HStack>
-            {recommendedLessons.map((lesson, i) => (
-              <LessonCard
-                lesson={lesson}
-                isRecommended
-                lessons={recommendedLessons}
-                setLessons={setRecommendedLessons}
-              />
-            ))}
+            {recommendedLessons
+              .sort((a, b) => a.priority - b.priority)
+              .filter(
+                (lesson) =>
+                  lesson.title != "Reading I" || lesson.priority == 0.5
+              )
+              .map((lesson, i) => (
+                <LessonCard
+                  lesson={lesson}
+                  isRecommended
+                  lessons={recommendedLessons}
+                  setLessons={setRecommendedLessons}
+                  priority={lesson.priority}
+                />
+              ))}
           </HStack>
         </motion.div>
       </Box>

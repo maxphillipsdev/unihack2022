@@ -15,6 +15,8 @@ interface Props {
   isRecommended?: boolean;
   lessons: any;
   setLessons: any;
+  priority: number;
+  removeCard: any;
 }
 
 export const LessonCard: React.FC<Props> = ({
@@ -22,6 +24,8 @@ export const LessonCard: React.FC<Props> = ({
   isRecommended = false,
   lessons,
   setLessons,
+  priority,
+  removeCard,
 }) => {
   return (
     <div className="container">
@@ -64,7 +68,7 @@ export const LessonCard: React.FC<Props> = ({
           <br />
           <Box sx={{ textAlign: "center", width: "100%" }}>
             {/* <Link href={`/lessons/${lesson.slug}`}> */}
-            <Link href={`/lessons/test`}>
+            <Link href={isRecommended ? `/lessons/test` : `/404`}>
               <Button>Start Lesson</Button>
             </Link>
           </Box>

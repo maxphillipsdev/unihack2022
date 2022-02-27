@@ -15,9 +15,11 @@ const getRecommendation: GetRecommendation = async (
   currAge
 ) => {
   const res = axios.get(
-    `http://localhost:3000/recommendation?lesson_score=${lessonScore}&lesson_target_age=${lessonTargetAge}&curr_competency=${currCompetency}&curr_age=${currAge}`
+    `http://localhost:8000/recommendation?lesson_score=${lessonScore}&lesson_target_age=${lessonTargetAge}&curr_competency=${currCompetency}&curr_age=${currAge}`
   );
+  console.log(res);
   const deltas: [number, number, number] = (await res).data;
+  console.log(deltas);
   return deltas;
 };
 

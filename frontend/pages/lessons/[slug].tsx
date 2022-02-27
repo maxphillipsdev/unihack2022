@@ -4,7 +4,10 @@ import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import client from "../../lib/client";
 import { useRouter } from "next/router";
 import MCQ from "../../components/MCQ";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import getRecommendation from "../../util/recommendation";
+import { UserContext } from "../_app";
+import axios from "axios";
 
 const MCQs = [
   {
@@ -29,6 +32,8 @@ const Lesson = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [answers, setAnswers] = useState(["", "", ""]);
   console.log(lesson);
+  const userContext = useContext(UserContext);
+  const router = useRouter();
 
   // Answers
   const onSubmit = () => {
@@ -43,7 +48,35 @@ const Lesson = ({
       i++;
       return newVal;
     }, 0);
-    alert(correct / MCQs.length);
+    const score = correct / MCQs.length;
+
+    // Adjusting rec
+    axios
+      .get(
+        `http://localhost:8000/recommendation?lesson_score=${score}&lesson_target_age=${6}&curr_competency=${
+          userContext.user.currCompetencies.literacy
+        }&curr_age=${userContext.user.currAge}`
+      )
+      .then((res) => {
+        console.log(res);
+        userContext.setUser({
+          ...userContext.user,
+          currCompetencies: {
+            ...userContext.user.currCompetencies,
+            literacy:
+              userContext.user.currCompetencies.literacy +
+              res.data.competency_delta,
+          },
+          currPriorities: {
+            ...userContext.user.currPriorities,
+            literacy:
+              userContext.user.currPriorities.literacy +
+              res.data.priority_delta,
+          },
+        });
+        router.push("/");
+      })
+      .catch(console.log);
   };
   return (
     <Flex
