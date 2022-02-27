@@ -1,10 +1,13 @@
 import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
+import client from "../../lib/client";
 import { useRouter } from "next/router";
 
-const Lesson = () => {
-  const router = useRouter();
-  const { slug } = router.query;
+const Lesson = ({
+  lesson,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  console.log(lesson);
 
   return (
     <Flex
@@ -20,20 +23,34 @@ const Lesson = () => {
         </Box>
         <Box w="50%" h="100%">
           <VStack h="100%">
-            <Box style={{ border: "1px solid black" }} h="full" w="100%">
-              Test
-            </Box>
-            <Box style={{ border: "1px solid black" }} h="full" w="100%">
-              Test
-            </Box>
-            <Box style={{ border: "1px solid black" }} h="full" w="100%">
-              Test
-            </Box>
+            {lesson.content.map((section: any) => {
+              return (
+                <Box key={section._key}>
+                  <Text>{section._type}</Text>
+                </Box>
+              );
+            })}
           </VStack>
         </Box>
       </HStack>
     </Flex>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const slug = ctx.params?.slug;
+  const lesson = await client.fetch(
+    `
+    *[_type == "lesson" && slug.current == $slug][0]
+  `,
+    { slug }
+  );
+
+  return {
+    props: {
+      lesson: lesson || null,
+    },
+  };
 };
 
 export default Lesson;
